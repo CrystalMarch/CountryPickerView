@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CountryPickerView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gC-Ve-YcL">
+                                <rect key="frame" x="82.5" y="60" width="210" height="68"/>
+                                <color key="backgroundColor" red="0.47887015342712402" green="0.73565429449081421" blue="0.36618971824645996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="Qzd-tZ-nrd"/>
+                                    <constraint firstAttribute="height" constant="68" id="s6g-rC-BGW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Show Country Picker View">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showCountryPickerView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6pH-lN-ZjN"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m65-IG-Cx0">
+                                <rect key="frame" x="20" y="170" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="PvB-4z-Eqc"/>
+                                    <constraint firstAttribute="height" constant="30" id="Wok-nV-pDf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lff-1E-xvq">
+                                <rect key="frame" x="80" y="170.5" width="230" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2MY-Cx-fcg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWV-2t-ndl">
+                                <rect key="frame" x="310" y="170.5" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="L5K-eJ-4hG"/>
+                                    <constraint firstAttribute="width" constant="45" id="ZGV-GE-PeR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="m65-IG-Cx0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3s8-HJ-H7i"/>
+                            <constraint firstItem="jWV-2t-ndl" firstAttribute="leading" secondItem="Lff-1E-xvq" secondAttribute="trailing" id="45n-L1-OFQ"/>
+                            <constraint firstItem="m65-IG-Cx0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="8H2-xD-nOu"/>
+                            <constraint firstItem="jWV-2t-ndl" firstAttribute="centerY" secondItem="Lff-1E-xvq" secondAttribute="centerY" id="PLh-aG-ARF"/>
+                            <constraint firstItem="Lff-1E-xvq" firstAttribute="leading" secondItem="m65-IG-Cx0" secondAttribute="trailing" constant="20" id="Yeo-Tj-bHj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jWV-2t-ndl" secondAttribute="trailing" constant="20" id="cz5-28-kbJ"/>
+                            <constraint firstItem="Lff-1E-xvq" firstAttribute="leading" secondItem="m65-IG-Cx0" secondAttribute="trailing" constant="20" id="dVU-rW-79P"/>
+                            <constraint firstItem="Lff-1E-xvq" firstAttribute="centerY" secondItem="m65-IG-Cx0" secondAttribute="centerY" id="lCn-zR-7oN"/>
+                            <constraint firstItem="jWV-2t-ndl" firstAttribute="leading" secondItem="Lff-1E-xvq" secondAttribute="trailing" id="oqW-kt-RNi"/>
+                            <constraint firstItem="2gC-Ve-YcL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qhn-rC-VpW"/>
+                            <constraint firstItem="2gC-Ve-YcL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="wfl-Iv-vFa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="countryCodeLabel" destination="jWV-2t-ndl" id="3l4-m9-6Zt"/>
+                        <outlet property="countryImageView" destination="m65-IG-Cx0" id="Blz-L6-GUz"/>
+                        <outlet property="countryNameLabel" destination="Lff-1E-xvq" id="gFD-fF-VyN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
