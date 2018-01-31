@@ -148,7 +148,7 @@ extension tableViewDataSource : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countryCell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as! CountryTableViewCell
-        countryCell.countryNameLabel.text = searchCountrys[indexPath.row]["zh"] as! String
+        countryCell.countryNameLabel.text = searchCountrys[indexPath.row]["en"] as! String
         countryCell.countryImageView.image = UIImage(named:"CountryPicker.bundle/\(searchCountrys[indexPath.row]["locale"] as! String)")
         countryCell.phoneCodeLabel.text = "+\(searchCountrys[indexPath.row]["code"] as! NSNumber)"
         return countryCell
