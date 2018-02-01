@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CountrySelectView: UIView {
-    static let shared = CountrySelectView()
-    var selectedCountryCallBack : ((_ countryDic: [String:Any])->(Void))!
-    let countryTableView = UITableView()
-    var searchCountrys : [[String:Any]]!
-    let searchBarView = UISearchBar()
-    var regex = ""
+open class CountrySelectView: UIView {
+    public static let shared = CountrySelectView()
+    public var selectedCountryCallBack : ((_ countryDic: [String:Any])->(Void))!
+    fileprivate var countryTableView = UITableView()
+    fileprivate var searchCountrys : [[String:Any]]!
+    fileprivate var searchBarView = UISearchBar()
+    fileprivate var regex = ""
     convenience init() {
         self.init(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height))
         searchCountrys = CountryCodeJson
@@ -73,14 +73,14 @@ class CountrySelectView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
 }
 private typealias searchBarDelegate = CountrySelectView
 extension searchBarDelegate : UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count == 0 {
             searchCountrys = CountryCodeJson
             countryTableView.reloadData()
@@ -126,7 +126,7 @@ extension searchBarDelegate : UISearchBarDelegate{
 }
 private typealias tapGestureDelegate = CountrySelectView
 extension tapGestureDelegate : UIGestureRecognizerDelegate{
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         if NSStringFromClass((touch.view?.classForCoder)!).components(separatedBy: ".").last! == "UITableViewCellContentView"{
             return false
@@ -136,7 +136,7 @@ extension tapGestureDelegate : UIGestureRecognizerDelegate{
 }
 private typealias tableViewDelegate = CountrySelectView
 extension tableViewDelegate : UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var dic = searchCountrys[indexPath.row]
         dic["countryImage"] = UIImage(named:"CountryPicker.bundle/\(searchCountrys[indexPath.row]["locale"] as! String)")
         self.selectedCountryCallBack(dic)
@@ -145,10 +145,10 @@ extension tableViewDelegate : UITableViewDelegate{
 }
 private typealias tableViewDataSource = CountrySelectView
 extension tableViewDataSource : UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchCountrys.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countryCell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as! CountryTableViewCell
         if searchCountrys[indexPath.row]["en"] != nil {
             countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["en"] as! String)
