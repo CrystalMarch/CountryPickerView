@@ -95,7 +95,7 @@ open class CountrySelectView: UIView {
         self.init(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height))
         searchCountrys = CountryCodeJson
         let tap = UITapGestureRecognizer()
-        tap.addTarget(self, action: #selector(self.dissmiss))
+        tap.addTarget(self, action: #selector(self.dismiss))
         tap.delegate = self
         self.addGestureRecognizer(tap)
         self.backgroundColor = UIColor.init(white: 0, alpha: 0.6)
@@ -142,7 +142,7 @@ open class CountrySelectView: UIView {
         self.countryTableView.reloadData()
         self.setLayout()
     }
-    @objc public func dissmiss() {
+    @objc public func dismiss() {
         self.removeFromSuperview()
     }
     override init(frame: CGRect) {
@@ -215,7 +215,7 @@ extension tableViewDelegate : UITableViewDelegate{
         var dic = searchCountrys[indexPath.row]
         dic["countryImage"] = UIImage(named:"CountryPicker.bundle/\(searchCountrys[indexPath.row]["locale"] as! String)")
         self.selectedCountryCallBack(dic)
-        self.dissmiss()
+        self.dismiss()
     }
 }
 private typealias tableViewDataSource = CountrySelectView
