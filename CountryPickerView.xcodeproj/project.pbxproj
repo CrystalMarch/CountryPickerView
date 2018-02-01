@@ -17,7 +17,6 @@
 		BA18C6862021CBF900A1E9AA /* CountrySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA18C6812021CBF800A1E9AA /* CountrySelectView.swift */; };
 		BA18C6872021CBF900A1E9AA /* CountryPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA18C6822021CBF800A1E9AA /* CountryPicker.bundle */; };
 		BA18C6882021CBF900A1E9AA /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA18C6832021CBF800A1E9AA /* CountryCode.swift */; };
-		BA18C6892021CBF900A1E9AA /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA18C6842021CBF800A1E9AA /* CountryTableViewCell.xib */; };
 		BA18C68A2021CBF900A1E9AA /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA18C6852021CBF800A1E9AA /* CountryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,6 @@
 		BA18C6812021CBF800A1E9AA /* CountrySelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectView.swift; sourceTree = "<group>"; };
 		BA18C6822021CBF800A1E9AA /* CountryPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CountryPicker.bundle; sourceTree = "<group>"; };
 		BA18C6832021CBF800A1E9AA /* CountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
-		BA18C6842021CBF800A1E9AA /* CountryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
 		BA18C6852021CBF800A1E9AA /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +141,6 @@
 				BA18C6822021CBF800A1E9AA /* CountryPicker.bundle */,
 				BA18C6812021CBF800A1E9AA /* CountrySelectView.swift */,
 				BA18C6852021CBF800A1E9AA /* CountryTableViewCell.swift */,
-				BA18C6842021CBF800A1E9AA /* CountryTableViewCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -259,7 +256,6 @@
 				BA18C65A2021CBCA00A1E9AA /* Assets.xcassets in Resources */,
 				BA18C6872021CBF900A1E9AA /* CountryPicker.bundle in Resources */,
 				BA18C6582021CBCA00A1E9AA /* Main.storyboard in Resources */,
-				BA18C6892021CBF900A1E9AA /* CountryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

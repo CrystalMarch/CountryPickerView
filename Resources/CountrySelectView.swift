@@ -24,8 +24,7 @@ open class CountrySelectView: UIView {
         self.addGestureRecognizer(tap)
         self.backgroundColor = UIColor.init(white: 0, alpha: 0.6)
         self.addSubview(countryTableView)
-
-        countryTableView.register(UINib.init(nibName: "CountryTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CountryTableViewCell")
+        countryTableView.register(CountryTableViewCell.classForCoder(), forCellReuseIdentifier: "CountryTableViewCell")
         countryTableView.delegate = self
         countryTableView.dataSource = self
         countryTableView.separatorStyle = .none
@@ -149,7 +148,15 @@ extension tableViewDataSource : UITableViewDataSource{
         return searchCountrys.count
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let countryCell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as! CountryTableViewCell
+        let indentifier = "CountryTableViewCell"
+        
+        var countryCell:CountryTableViewCell! = tableView.dequeueReusableCell(withIdentifier: indentifier) as? CountryTableViewCell
+        
+        if countryCell == nil {
+            
+            countryCell=CountryTableViewCell(style: .default, reuseIdentifier: indentifier)
+        }
+//        let countryCell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as! CountryTableViewCell
         if searchCountrys[indexPath.row]["en"] != nil {
             countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["en"] as! String)
         }
