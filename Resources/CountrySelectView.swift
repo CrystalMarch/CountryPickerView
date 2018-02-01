@@ -137,7 +137,9 @@ extension tapGestureDelegate : UIGestureRecognizerDelegate{
 private typealias tableViewDelegate = CountrySelectView
 extension tableViewDelegate : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedCountryCallBack(searchCountrys[indexPath.row])
+        var dic = searchCountrys[indexPath.row]
+        dic["countryImage"] = UIImage(named:"CountryPicker.bundle/\(searchCountrys[indexPath.row]["locale"] as! String)")
+        self.selectedCountryCallBack(dic)
         self.dissmiss()
     }
 }

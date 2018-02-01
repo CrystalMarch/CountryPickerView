@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         countryView.show()
         countryView.selectedCountryCallBack = { (countryDic) -> Void in
             self.countryNameLabel.text = "\(countryDic["zh"] as! String)   \(countryDic["en"] as! String)"
-            self.countryImageView.image = UIImage(named:"CountryPicker.bundle/\(countryDic["locale"] as! String)")
+            self.countryImageView.image = countryDic["countryImage"] as? UIImage
             self.countryCodeLabel.text = "+\(countryDic["code"] as! NSNumber)"
         }
     }
