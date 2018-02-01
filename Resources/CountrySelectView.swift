@@ -8,6 +8,10 @@
 
 import UIKit
 
+public enum DisplayLanguageType{
+    case chinese
+    case english
+}
 open class CountrySelectView: UIView {
     public static let shared = CountrySelectView()
     public var selectedCountryCallBack : ((_ countryDic: [String:Any])->(Void))!
@@ -15,6 +19,78 @@ open class CountrySelectView: UIView {
     fileprivate var searchCountrys : [[String:Any]]!
     fileprivate var searchBarView = UISearchBar()
     fileprivate var regex = ""
+    
+    fileprivate var _searchBarPlaceholder: String = "search"
+    public var searchBarPlaceholder: String{
+        get{
+            return _searchBarPlaceholder
+        }
+        set{
+            _searchBarPlaceholder = newValue
+            searchBarView.placeholder = _searchBarPlaceholder
+        }
+    }
+    fileprivate var _countryNameFont: UIFont = UIFont.systemFont(ofSize: 16)
+    public var countryNameFont:UIFont{
+        get{
+            return _countryNameFont
+        }
+        set{
+            _countryNameFont = newValue
+            countryTableView.reloadData()
+        }
+    }
+    fileprivate var _countryPhoneCodeFont: UIFont = UIFont.systemFont(ofSize: 14)
+    public var countryPhoneCodeFont:UIFont{
+        get{
+            return _countryPhoneCodeFont
+        }
+        set{
+            _countryPhoneCodeFont = newValue
+            countryTableView.reloadData()
+        }
+    }
+    fileprivate var _countryNameColor: UIColor = .black
+    public var countryNameColor:UIColor{
+        get{
+            return _countryNameColor
+        }
+        set{
+            _countryNameColor = newValue
+            countryTableView.reloadData()
+        }
+    }
+    fileprivate var _countryPhoneCodeColor: UIColor = .gray
+    public var countryPhoneCodeColor:UIColor{
+        get{
+            return _countryPhoneCodeColor
+        }
+        set{
+            _countryPhoneCodeColor = newValue
+            countryTableView.reloadData()
+        }
+    }
+    fileprivate var _barTintColor:UIColor = .green
+    public var barTintColor:UIColor{
+        get{
+            return _barTintColor
+        }
+        set{
+            _barTintColor = newValue
+            searchBarView.tintColor = _barTintColor
+        }
+    }
+    fileprivate var _displayLanguage : DisplayLanguageType = .english
+    public var displayLanguage:DisplayLanguageType{
+        get{
+            return _displayLanguage
+        }
+        set{
+            _displayLanguage = newValue
+            countryTableView.reloadData()
+        }
+    }
+    
     convenience init() {
         self.init(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height))
         searchCountrys = CountryCodeJson
@@ -156,13 +232,21 @@ extension tableViewDataSource : UITableViewDataSource{
             
             countryCell=CountryTableViewCell(style: .default, reuseIdentifier: indentifier)
         }
-//        let countryCell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as! CountryTableViewCell
-        if searchCountrys[indexPath.row]["en"] != nil {
+        if _displayLanguage == .english {
             countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["en"] as! String)
         }
-        
-        countryCell.countryImageView.image = UIImage(named:"CountryPicker.bundle/\(searchCountrys[indexPath.row]["locale"] as! String)")
+        if _displayLanguage == .chinese {
+            countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["zh"] as! String)
+        }
+        countryCell.countryNameLabel.font = _countryNameFont
+        countryCell.countryNameLabel.textColor = _countryNameColor
+        let path = Bundle(for: CountrySelectView.self).resourcePath! + "/CountryPicker.bundle"
+        let CABundle = Bundle(path: path)!
+        countryCell.countryImageView.image = UIImage(named: "\(searchCountrys[indexPath.row]["locale"] as! String)", in:  CABundle, compatibleWith: nil)
+
         countryCell.phoneCodeLabel.text = "+\(searchCountrys[indexPath.row]["code"] as! NSNumber)"
+        countryCell.phoneCodeLabel.font = _countryPhoneCodeFont
+        countryCell.phoneCodeLabel.textColor = _countryPhoneCodeColor
         return countryCell
     }
 }

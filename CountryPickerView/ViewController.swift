@@ -21,6 +21,8 @@ class ViewController: UIViewController {
 
     @IBAction func showCountryPickerView(_ sender: UIButton) {
         let countryView = CountrySelectView.shared
+        countryView.barTintColor = .red
+        countryView.displayLanguage = .chinese
         countryView.show()
         countryView.selectedCountryCallBack = { (countryDic) -> Void in
             self.countryNameLabel.text = "\(countryDic["zh"] as! String)   \(countryDic["en"] as! String)"
