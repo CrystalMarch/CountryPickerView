@@ -59,7 +59,7 @@ open class CountrySelectView: UIView {
         self.addConstraint(NSLayoutConstraint(item: countryTableView, attribute: .centerX, relatedBy:.equal, toItem:self, attribute:.centerX, multiplier:1.0, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: countryTableView, attribute: .centerY, relatedBy:.equal, toItem:self, attribute:.centerY, multiplier:1.0, constant: 0))
     }
-    func show() {
+    public func show() {
         let window = UIApplication.shared.delegate?.window as! UIWindow
         window.addSubview(self)
         searchBarView.text = ""
@@ -67,7 +67,7 @@ open class CountrySelectView: UIView {
         self.countryTableView.reloadData()
         self.setLayout()
     }
-    @objc func dissmiss() {
+    @objc public func dissmiss() {
         self.removeFromSuperview()
     }
     override init(frame: CGRect) {
