@@ -25,6 +25,7 @@ s.platform     = :ios
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/CrystalMarch/CountryPickerView.git", :tag => "1.0.0" }
   s.source_files  = "CountryPickerView/Resources/*.{swift,xib}"
+  s.description  = <<-DESC
   s.resources = "CountryPickerView/Resources/CountryPicker.bundle"
   s.requires_arc = true
   # This description is used to generate tags and improve search results.
