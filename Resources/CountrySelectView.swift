@@ -121,7 +121,8 @@ open class CountrySelectView: UIView {
         
     }
     func setLayout() {
-        let window = UIApplication.shared.delegate?.window as! UIWindow
+        
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         countryTableView.translatesAutoresizingMaskIntoConstraints = false
         self.superview!.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy:.equal, toItem:self.superview!, attribute: .width, multiplier:1.0, constant:0.0))
@@ -133,10 +134,14 @@ open class CountrySelectView: UIView {
         self.addConstraint(NSLayoutConstraint(item: countryTableView, attribute: .height, relatedBy:.equal, toItem:self, attribute: .height, multiplier:0.7, constant:0))
         self.addConstraint(NSLayoutConstraint(item: countryTableView, attribute: .centerX, relatedBy:.equal, toItem:self, attribute:.centerX, multiplier:1.0, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: countryTableView, attribute: .centerY, relatedBy:.equal, toItem:self, attribute:.centerY, multiplier:1.0, constant: 0))
+        
+        
     }
     public func show() {
-        let window = UIApplication.shared.delegate?.window as! UIWindow
-        window.addSubview(self)
+        
+        if let window = UIApplication.shared.delegate!.window! {
+            window.addSubview(self)
+        }
         searchBarView.text = ""
         searchCountrys = CountryCodeJson
         self.countryTableView.reloadData()
@@ -173,9 +178,7 @@ extension searchBarDelegate : UISearchBarDelegate{
                 results.append(countryDic)
             }
         }
-        if (results != nil) {
-            searchCountrys = results
-        }
+        searchCountrys = results
         countryTableView.reloadData()
     }
     func getRegexString(searchString: String){
@@ -197,7 +200,7 @@ extension searchBarDelegate : UISearchBarDelegate{
         let isValid = predicate.evaluate(with: compareString)
         return isValid
     }
-  
+    
 }
 private typealias tapGestureDelegate = CountrySelectView
 extension tapGestureDelegate : UIGestureRecognizerDelegate{
@@ -243,7 +246,7 @@ extension tableViewDataSource : UITableViewDataSource{
         let path = Bundle(for: CountrySelectView.self).resourcePath! + "/CountryPicker.bundle"
         let CABundle = Bundle(path: path)!
         countryCell.countryImageView.image = UIImage(named: "\(searchCountrys[indexPath.row]["locale"] as! String)", in:  CABundle, compatibleWith: nil)
-
+        
         countryCell.phoneCodeLabel.text = "+\(searchCountrys[indexPath.row]["code"] as! NSNumber)"
         countryCell.phoneCodeLabel.font = _countryPhoneCodeFont
         countryCell.phoneCodeLabel.textColor = _countryPhoneCodeColor
