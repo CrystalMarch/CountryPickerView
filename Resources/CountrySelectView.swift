@@ -11,6 +11,7 @@ import UIKit
 public enum DisplayLanguageType{
     case chinese
     case english
+    case spanish
 }
 open class CountrySelectView: UIView {
     public static let shared = CountrySelectView()
@@ -172,9 +173,10 @@ extension searchBarDelegate : UISearchBarDelegate{
         for countryDic in CountryCodeJson {
             let zh = countryDic["zh"] as! String
             let en = countryDic["en"] as! String
+            let es = countryDic["es"] as! String
             let code = "\(countryDic["code"] as! NSNumber)"
             let locale = countryDic["locale"] as! String
-            if self.checkSearchStringCharHas(compareString: zh.lowercased())||self.checkSearchStringCharHas(compareString: en.lowercased().replacingOccurrences(of: " ", with: ""))||self.checkSearchStringCharHas(compareString: code)||self.checkSearchStringCharHas(compareString: locale.lowercased().replacingOccurrences(of: " ", with: "")){
+            if self.checkSearchStringCharHas(compareString: zh.lowercased())||self.checkSearchStringCharHas(compareString: en.lowercased().replacingOccurrences(of: " ", with: ""))||self.checkSearchStringCharHas(compareString: es.lowercased().replacingOccurrences(of: " ", with: ""))||self.checkSearchStringCharHas(compareString: code)||self.checkSearchStringCharHas(compareString: locale.lowercased().replacingOccurrences(of: " ", with: "")){
                 results.append(countryDic)
             }
         }
@@ -240,6 +242,9 @@ extension tableViewDataSource : UITableViewDataSource{
         }
         if _displayLanguage == .chinese {
             countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["zh"] as! String)
+        }
+        if _displayLanguage == .spanish {
+            countryCell.countryNameLabel.text = (searchCountrys[indexPath.row]["es"] as! String)
         }
         countryCell.countryNameLabel.font = _countryNameFont
         countryCell.countryNameLabel.textColor = _countryNameColor
