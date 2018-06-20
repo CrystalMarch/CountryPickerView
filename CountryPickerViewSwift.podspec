@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "CountryPickerViewSwift"
-s.version      = "1.2.2"
+s.version      = "1.2.3"
 s.summary      = "A simple country code picker on iOS, support Chinese,english,national flag,ISO 3166-1 and calling code."
 s.homepage     = "https://github.com/CrystalMarch/CountryPickerView"
 s.license      = { :type => "MIT", :file => "LICENSE" }
